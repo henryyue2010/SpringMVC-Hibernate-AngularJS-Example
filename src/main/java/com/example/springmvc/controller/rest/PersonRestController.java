@@ -1,4 +1,4 @@
-package com.example.springmvc.rest.controller;
+package com.example.springmvc.controller.rest;
 
 import java.util.List;
 
@@ -17,15 +17,9 @@ import com.example.springmvc.model.Person;
 import com.example.springmvc.service.IPersonService;
 
 @RestController
-@RequestMapping("/info")
 public class PersonRestController {
 	@Autowired
 	private IPersonService personService;
-
-	@RequestMapping("/home")
-	public String home() {
-		return "home";
-	}
 
 	@RequestMapping(value = "/person/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Person> getPersonById(@PathVariable("id") Integer id) {

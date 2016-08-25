@@ -16,4 +16,6 @@ public interface IPersonDao {
 	void deletePerson(int pid);
 
 	boolean personExists(String name, String location);
+
+	void saveOrUpdate(Person person);
 }
