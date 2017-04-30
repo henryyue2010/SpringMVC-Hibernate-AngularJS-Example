@@ -30,7 +30,6 @@ public class PersonDaoImpl implements IPersonDao {
 		return sessionFactory.getCurrentSession().get(Person.class, pid);
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<Person> getAllPersons() {
 		String hql = "FROM Person as p ORDER BY p.pid";
@@ -40,12 +39,8 @@ public class PersonDaoImpl implements IPersonDao {
 
 	@Override
 	public boolean addPerson(Person person) {
-		try {
-			sessionFactory.getCurrentSession().save(person);
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
+		sessionFactory.getCurrentSession().save(person);
+		return true;
 	}
 
 	@Override
@@ -66,7 +61,6 @@ public class PersonDaoImpl implements IPersonDao {
 		sessionFactory.getCurrentSession().delete(getPersonById(pid));
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public boolean personExists(String name, String location) {
 		String hql = "FROM Person as p WHERE p.name = ? and p.location = ?";
